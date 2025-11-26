@@ -110,7 +110,9 @@ const stubs: []const LibStub = &.{
 comptime {
     for (stubs) |stub| {
         for (stub.functions) |function_name| {
-            @export(&makeFunctionStub(stub.lib_name, function_name), .{ .name = function_name });
+            if (@hasDecl(c, function_name)) {
+                @export(&makeFunctionStub(stub.lib_name, function_name), .{ .name = function_name });
+            }
         }
     }
 }
@@ -176,16 +178,18 @@ const Ptrs = blk: {
 
     for (stubs) |stub| {
         for (stub.functions) |name| {
-            const decl_type = @TypeOf(@field(c, name));
-            const field_type = ?*decl_type;
-            const default_value: field_type = null;
-            ptrs_info.fields = ptrs_info.fields ++ &[_]std.builtin.Type.StructField{.{
-                .name = name,
-                .type = field_type,
-                .default_value_ptr = @ptrCast(&default_value),
-                .is_comptime = false,
-                .alignment = @alignOf(field_type),
-            }};
+            if (@hasDecl(c, name)) {
+                const decl_type = @TypeOf(@field(c, name));
+                const field_type = ?*decl_type;
+                const default_value: field_type = null;
+                ptrs_info.fields = ptrs_info.fields ++ &[_]std.builtin.Type.StructField{.{
+                    .name = name,
+                    .type = field_type,
+                    .default_value_ptr = @ptrCast(&default_value),
+                    .is_comptime = false,
+                    .alignment = @alignOf(field_type),
+                }};
+            }
         }
     }
 

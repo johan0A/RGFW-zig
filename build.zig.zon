@@ -14,6 +14,10 @@
             .url = "git+https://gitlab.freedesktop.org/wayland/wayland-protocols?ref=1.46#6141e1154303dadd5c3e480bc4a16e26f1dcb2af",
             .hash = "N-V-__8AABlFDwAcpEcaUeZrcbYwop2n5z6G52yjKX-nLkAJ",
         },
+        .libxkbcommon = .{
+            .url = "git+https://github.com/allyourcodebase/libxkbcommon.git?ref=1.11.0-1#809157d5118909298f3e086fa8d8103198e938fd",
+            .hash = "libxkbcommon-1.11.0-1-93LaF6pwAgDFoaLfOkR8ioG4RVcDHbBhsDmC_rYwyOEG",
+        },
     },
     .minimum_zig_version = "0.15.2",
     .paths = .{""},

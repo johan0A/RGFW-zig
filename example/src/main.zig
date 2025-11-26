@@ -66,11 +66,12 @@ pub fn main() !void {
 
     c.RGFW_window_setExitKey(win, c.RGFW_escape);
 
-    const mon = c.RGFW_window_getMonitor(win);
+    var mon = c.RGFW_window_getMonitor(win);
 
-    // Wayland workaround if needed:
-    // mon.mode.w = 500;
-    // mon.mode.h = 500;
+    if (c.RGFW_usingWayland() == c.RGFW_TRUE) {
+        mon.mode.w = 500;
+        mon.mode.h = 500;
+    }
 
     const allocator = std.heap.page_allocator;
     const bufferSize = @as(usize, @intCast(mon.mode.w)) * @as(usize, @intCast(mon.mode.h)) * 4;
