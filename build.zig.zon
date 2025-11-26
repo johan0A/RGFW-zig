@@ -1,0 +1,21 @@
+.{
+    .name = .RGFW_zig,
+    .version = "0.0.1",
+    .dependencies = .{
+        .vulkan_headers = .{
+            .url = "git+https://github.com/KhronosGroup/Vulkan-Headers?ref=v1.4.326#d1cd37e925510a167d4abef39340dbdea47d8989",
+            .hash = "N-V-__8AAESg9gHKzlANbo03d4Fcb5m_5aZXJXIhYbWzCe4G",
+        },
+        .wayland = .{
+            .url = "git+https://github.com/allyourcodebase/wayland.git?ref=1.24.0-2#209cdc0d604facd02f67a93a145188d10a54f1ce",
+            .hash = "wayland-1.24.0-2-dxEBa4RlAAABLcAFSA_vUHi0KqowweDZzkcOQ8KNG4N7",
+        },
+        .wayland_protocols = .{
+            .url = "git+https://gitlab.freedesktop.org/wayland/wayland-protocols?ref=1.46#6141e1154303dadd5c3e480bc4a16e26f1dcb2af",
+            .hash = "N-V-__8AABlFDwAcpEcaUeZrcbYwop2n5z6G52yjKX-nLkAJ",
+        },
+    },
+    .minimum_zig_version = "0.15.2",
+    .paths = .{""},
+    .fingerprint = 0xd5e4ce8f6939625,
+}

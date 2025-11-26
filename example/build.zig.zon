@@ -1,0 +1,12 @@
+.{
+    .name = .example,
+    .version = "0.0.1",
+    .dependencies = .{
+        .RGFW = .{
+            .path = "../",
+        },
+    },
+    .minimum_zig_version = "0.15.2",
+    .paths = .{""},
+    .fingerprint = 0x6eec9b9f4f7cc9b9,
+}
