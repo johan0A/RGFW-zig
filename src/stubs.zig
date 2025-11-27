@@ -5,6 +5,14 @@ const LibStub = struct {
 
 const stubs: []const LibStub = &.{
     .{
+        .lib_name = "libvulkan.so",
+        .functions = &.{
+            "vkCreateXlibSurfaceKHR",
+            "XVisualIDFromVisual",
+            "vkGetPhysicalDeviceXlibPresentationSupportKHR",
+        },
+    },
+    .{
         .lib_name = "libXrandr.so",
         .functions = &.{
             "XRRGetScreenInfo",
@@ -164,6 +172,7 @@ fn stub_Xrandr(comptime name: [:0]const u8, R: type, args: anytype) R {
 const dlls = struct {
     var @"libXrandr.so": ?*anyopaque = null;
     var @"libX11.so": ?*anyopaque = null;
+    var @"libvulkan.so": ?*anyopaque = null;
 };
 
 var ptrs: Ptrs = .{};
