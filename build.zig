@@ -42,7 +42,6 @@ pub fn build(b: *std.Build) void {
 
         rgfw_module.linkLibrary(wayland_client);
         rgfw_module.linkLibrary(wayland_cursor);
-        rgfw_module.linkLibrary(wayland_client);
 
         const libxkbcommon_dependency = b.dependency("libxkbcommon", .{
             .target = target,

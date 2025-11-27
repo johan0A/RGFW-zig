@@ -5,6 +5,25 @@ const LibStub = struct {
 
 const stubs: []const LibStub = &.{
     .{
+        .lib_name = "libGL.so",
+        .functions = &.{
+            "glXChooseFBConfig",
+            "glXGetVisualFromFBConfig",
+            "glXGetFBConfigAttrib",
+            "glXGetProcAddressARB",
+            "glXCreateContext",
+            "glXCreateWindow",
+            "glXMakeCurrent",
+            "glXDestroyWindow",
+            "glXDestroyContext",
+            "glXGetProcAddress",
+            "glXQueryExtensionsString",
+            "glXGetCurrentContext",
+            "glXSwapBuffers",
+            "XDefaultScreen",
+        },
+    },
+    .{
         .lib_name = "libvulkan.so",
         .functions = &.{
             "vkCreateXlibSurfaceKHR",
@@ -173,6 +192,7 @@ const dlls = struct {
     var @"libXrandr.so": ?*anyopaque = null;
     var @"libX11.so": ?*anyopaque = null;
     var @"libvulkan.so": ?*anyopaque = null;
+    var @"libGL.so": ?*anyopaque = null;
 };
 
 var ptrs: Ptrs = .{};
@@ -205,7 +225,7 @@ const Ptrs = blk: {
     break :blk @Type(.{ .@"struct" = ptrs_info });
 };
 
-// workaround for making functions with arbitrary count of arguments at comptime
+// workaround for making functions with arbitrary number of arguments at comptime
 fn makeFn(
     comptime func: anytype,
     comptime cc: std.builtin.CallingConvention,

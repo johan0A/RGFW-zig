@@ -14,8 +14,6 @@ pub fn build(b: *std.Build) void {
         const rgfw_dep = b.dependency("RGFW", .{
             .target = target,
             .optimize = optimize,
-            // .wayland = true,
-            // .vulkan = true,
         });
         const rgfw_lib = rgfw_dep.artifact("RGFW");
         root_mod.linkLibrary(rgfw_lib);
